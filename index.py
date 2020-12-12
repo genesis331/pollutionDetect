@@ -26,24 +26,24 @@ if option == "Project Overview":
     st.title('Project Title')
     st.write('Project Description')
 
-    st.subheader('Problem Statement')
+    st.header('Problem Statement')
     st.write('Carbon emissions from car exhaust gases contain a great number of chemical substances that are detrimental not only to the human body, but also to environmental health. In a country with high car ownership like Malaysia, many environmentally harmful gases and substances are released into the surroundings on a daily basis. In the long term, this phenomenon leads to cases of climate change, particularly global warming. As seen in the graph below, the rate of carbon emission has seen a steady increase in the past 50 years.')
     st.write('')
 
     img = Image.open("assets/graph.png")
     st.image(img, width=600)
 
-    st.subheader('Solution')
+    st.header('Solution')
     st.write('1) A clear photo of incoming traffic is taken to monitor at regular intervals on Road X, preferably during the red light when cars are stationary so as to ease the process of analysis and object detection.')
     st.write('2) Traffic analysis is carried out by counting the number of vehicles at the time of the monitoring using FDK object_detection.')
 
-    st.subheader('Future Improvements')
+    st.header('Future Improvements')
     st.write('Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eu laoreet lacus, non euismod quam. Vivamus ac erat ut magna pretium iaculis. Pellentesque at lorem augue. Sed non orci non nisi suscipit tincidunt a nec tellus. Sed feugiat turpis nec felis accumsan, et malesuada elit consectetur. Nullam blandit luctus erat mattis ultrices. Interdum et malesuada fames ac ante ipsum primis in faucibus. Vestibulum efficitur gravida velit, in lobortis sapien lacinia eget. Integer sagittis est turpis, eget aliquam risus pulvinar nec.')
 
-    st.subheader('Our Team')
+    st.header('Our Team')
     st.write('Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eu laoreet lacus, non euismod quam. Vivamus ac erat ut magna pretium iaculis. Pellentesque at lorem augue. Sed non orci non nisi suscipit tincidunt a nec tellus. Sed feugiat turpis nec felis accumsan, et malesuada elit consectetur. Nullam blandit luctus erat mattis ultrices. Interdum et malesuada fames ac ante ipsum primis in faucibus. Vestibulum efficitur gravida velit, in lobortis sapien lacinia eget. Integer sagittis est turpis, eget aliquam risus pulvinar nec.')
 
-    st.subheader('Appendix')
+    st.header('Appendix')
     st.text('https://www.geography.org.uk/teaching-resources/singapore-malaysia/Can-Malaysia-do-anything-about-its-air-pollution#:~:text=The%20first%20is%20air%20pollution,in%20all%20its%20major%20cities.')
     st.text('https://www.ucsusa.org/resources/cars-trucks-buses-and-air-pollution')
     st.text('https://www.researchgate.net/publication/317304216_Verification_Relationship_between_Vehicle_Data_and_Air_Pollution_Index_Using_Muti-linear_Regression_Modeling')
@@ -52,6 +52,14 @@ if option == "Project Overview":
 
 elif option == "Project Demo":
     st.title('Project Demo')
+    st.write('')
+
+    left_column, right_column = st.beta_columns(2)
+    car_limit = left_column.number_input('Cars',min_value=0,value=0)
+    bus_limit = left_column.number_input('Buses',min_value=0,value=0)
+    truck_limit = left_column.number_input('Trucks',min_value=0,value=0)
+    motorcycle_limit = left_column.number_input('Motorcycles',min_value=0,value=0)
+    right_column.header('Total vehicle limit: ' + str(car_limit + bus_limit + truck_limit + motorcycle_limit))
     st.write('')
 
     st.echo()
@@ -91,7 +99,42 @@ elif option == "Project Demo":
     dict["bus"] += list.count(5)
     dict["truck"] += list.count(7)
     dict["motorcycle"] += list.count(7)
-    dict
+    st.table(pd.DataFrame(dict.items(),columns=['Vehicle Type','Value']))
+    st.write('')
+
+    imgTick = Image.open("assets/check-circle.png")
+    imgX = Image.open("assets/alert-circle.png")
+
+    left_column1, right_column1 = st.beta_columns(2)
+    left_column1.subheader('Car:')
+    if car_limit == 0 | car_limit >= dict["cars"]:
+        left_column1.image(imgTick,width=30)
+    else:
+        left_column1.image(imgX,width=30)
+
+    left_column1.subheader('Bus:')
+    if bus_limit == 0 | bus_limit >= dict["bus"]:
+        left_column1.image(imgTick,width=30)
+    else:
+        left_column1.image(imgX,width=30)
+
+    left_column1.subheader('Truck:')
+    if truck_limit == 0 | truck_limit >= dict["truck"]:
+        left_column1.image(imgTick,width=30)
+    else:
+        left_column1.image(imgX,width=30)
+
+    left_column1.subheader('Motorcycle:')
+    if motorcycle_limit == 0 | motorcycle_limit >= dict["motorcycle"]:
+        left_column1.image(imgTick,width=30)
+    else:
+        left_column1.image(imgX,width=30)
+
+    right_column1.subheader('Number of vehicles in total:')
+    if (car_limit + bus_limit + truck_limit + motorcycle_limit) == 0 | (car_limit + bus_limit + truck_limit + motorcycle_limit) >= len(list):
+        right_column1.image(imgTick,width=60)
+    else:
+        right_column1.image(imgX,width=60)
 
 elif option == "Linear Regression Prediction":
     st.title('Extra stuff')
