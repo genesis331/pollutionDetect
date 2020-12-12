@@ -79,6 +79,20 @@ elif option == "Project Demo":
         cv2.imwrite('tempImage.jpg', out_img)
         st.image('tempImage.jpg', width=700)
 
+    objects = getattr(output['instances'],'pred_classes')
+    list = objects.tolist()
+    dict = {
+        "cars": 0,
+        "bus": 0,
+        "truck": 0,
+        "motorcycle" : 0
+    }
+    dict["cars"] += list.count(2)
+    dict["bus"] += list.count(5)
+    dict["truck"] += list.count(7)
+    dict["motorcycle"] += list.count(7)
+    dict
+
 elif option == "Linear Regression Prediction":
     st.title('Extra stuff')
     st.write('Coming Soon')
