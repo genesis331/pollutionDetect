@@ -23,7 +23,7 @@ option = st.sidebar.selectbox(
 if option == "Project Overview":
     from PIL import Image
 
-    st.title('Project Title')
+    st.title('MyTACC')
     st.write('Deep Learning for Traffic Analysis and Climate Control')
 
     st.header('Problem Statement')
@@ -34,11 +34,15 @@ if option == "Project Overview":
     st.image(img, width=600)
 
     st.header('Solution')
+    st.write('0) Local authorities may choose to set a certain limit to the number of cars on the road to be notified when that limit is reached')
     st.write('1) A clear photo of incoming traffic is taken to monitor at regular intervals on Road X, preferably during the red light when cars are stationary so as to ease the process of analysis and object detection.')
     st.write('2) Traffic analysis is carried out by counting the number of vehicles at the time of the monitoring using FDK object_detection.')
+    st.write('3) The data is collected and authorities may act accordingly. For example, local authorities may want to adjust the red light durations, monitor carbon emission in a given area and limit cars on road etc.')
 
     st.header('Future Improvements')
-    st.write('Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eu laoreet lacus, non euismod quam. Vivamus ac erat ut magna pretium iaculis. Pellentesque at lorem augue. Sed non orci non nisi suscipit tincidunt a nec tellus. Sed feugiat turpis nec felis accumsan, et malesuada elit consectetur. Nullam blandit luctus erat mattis ultrices. Interdum et malesuada fames ac ante ipsum primis in faucibus. Vestibulum efficitur gravida velit, in lobortis sapien lacinia eget. Integer sagittis est turpis, eget aliquam risus pulvinar nec.')
+    st.write('0) Feed a live video into the product.')
+    st.write('1) Product can become a webhook and automate tasks if number of vehicles on the road exceeds the limit.')
+    st.write('2) Product can be integrated into a webapp that advises users to take up public transport instead of using private vehicles and passenger cars to reduce carbon emission.')
 
     st.header('Our Team')
     st.write('')
