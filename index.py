@@ -169,14 +169,16 @@ elif option == "Project Demo":
 
 elif option == "Linear Regression Prediction":
     st.title('Extra stuff')
-    st.write('Coming Soon')
+    st.write('A simple prediction of future carbon emissions')
     st.write('')
 
     st.echo()
     with st.echo():
+        # Read downloaded dataset from Kaggle
         filepath = "./assets/data.csv"
         raw_data = pd.read_csv(filepath)
 
+        # Remove unwanted contents and restructure the data
         extracted_data = raw_data.loc[raw_data['Country Name'] == 'Malaysia']
         cleaned_data = extracted_data.dropna(axis=1).drop(
             columns=['Country Name', 'Country Code', 'Indicator Name', 'Indicator Code'])
@@ -186,30 +188,36 @@ elif option == "Linear Regression Prediction":
     
     st.echo()
     with st.echo():
+        # Define a model
         model = tf.keras.Sequential([
             layers.Dense(units=1)
         ])
 
+        # Compile a model
         model.compile(
             optimizer=tf.optimizers.Adam(learning_rate=0.1),
             loss='mean_absolute_error'
         )
 
+        # Fit training data to model
         history = model.fit(
             data['Year Index'], data['Value'],
             epochs=50
         )
 
+        # Store the logs
         hist = pd.DataFrame(history.history)
         hist['epoch'] = history.epoch
 
     st.echo()
     with st.echo():
+        # Make prediction
         x = tf.linspace(1, 70, 2)
         y = model.predict(x)
 
     st.echo()
     with st.echo():
+        # Plot a loss graph
         plt.plot(history.history['loss'], label='loss')
         plt.xlabel('Epoch')
         plt.ylabel('Error')
@@ -219,6 +227,7 @@ elif option == "Linear Regression Prediction":
 
     st.echo()
     with st.echo():
+        # Scatterplot of data and adding regression line
         plt.scatter(data['Year Index'], data['Value'], label='Data')
         plt.plot(x, y, color='m', label='Predictions')
         plt.xlabel('Year Index')
