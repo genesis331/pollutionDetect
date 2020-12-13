@@ -70,6 +70,11 @@ if option == "Project Overview":
     st.text('https://www.researchgate.net/publication/286197080_Air_pollution_study_of_vehicles_emission_in_high_volume_traffic_Selangor_Malaysia_as_a_case_study')
     st.text('https://www.titlemax.com/resources/the-effect-of-your-cars-carbon-emission/')
 
+    st.write('')
+    st.write('')
+    st.subheader('Project open-sourced on GitHub.')
+    st.write('https://github.com/AceReapers101/fdh-hackathon')
+
 elif option == "Project Demo":
     st.title('Project Demo')
     st.write('')
