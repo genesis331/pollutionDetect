@@ -24,7 +24,7 @@ if option == "Project Overview":
     from PIL import Image
 
     st.title('Project Title')
-    st.write('Project Description')
+    st.write('Deep Learning for Traffic Analysis and Climate Control')
 
     st.header('Problem Statement')
     st.write('Carbon emissions from car exhaust gases contain a great number of chemical substances that are detrimental not only to the human body, but also to environmental health. In a country with high car ownership like Malaysia, many environmentally harmful gases and substances are released into the surroundings on a daily basis. In the long term, this phenomenon leads to cases of climate change, particularly global warming. As seen in the graph below, the rate of carbon emission has seen a steady increase in the past 50 years.')
@@ -41,7 +41,23 @@ if option == "Project Overview":
     st.write('Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eu laoreet lacus, non euismod quam. Vivamus ac erat ut magna pretium iaculis. Pellentesque at lorem augue. Sed non orci non nisi suscipit tincidunt a nec tellus. Sed feugiat turpis nec felis accumsan, et malesuada elit consectetur. Nullam blandit luctus erat mattis ultrices. Interdum et malesuada fames ac ante ipsum primis in faucibus. Vestibulum efficitur gravida velit, in lobortis sapien lacinia eget. Integer sagittis est turpis, eget aliquam risus pulvinar nec.')
 
     st.header('Our Team')
-    st.write('Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eu laoreet lacus, non euismod quam. Vivamus ac erat ut magna pretium iaculis. Pellentesque at lorem augue. Sed non orci non nisi suscipit tincidunt a nec tellus. Sed feugiat turpis nec felis accumsan, et malesuada elit consectetur. Nullam blandit luctus erat mattis ultrices. Interdum et malesuada fames ac ante ipsum primis in faucibus. Vestibulum efficitur gravida velit, in lobortis sapien lacinia eget. Integer sagittis est turpis, eget aliquam risus pulvinar nec.')
+    st.write('')
+    col1, col2, col3 = st.beta_columns(3)
+    col1.image(Image.open("assets/cheahzixu.jpg"),width=150)
+    col1.subheader('Cheah Zixu')
+    col1.write('@Xephius')
+    col1.write('GitHub: @genesis331')
+    col1.write('IG: @zixucheah331')
+    col2.image(Image.open("assets/choochenzhung.jpg"),width=150)
+    col2.subheader('Choo Chen Zhung')
+    col2.write('@Xectroz')
+    col2.write('GitHub: @Deadsteration')
+    col2.write('IG: @czhung0701')
+    col3.image(Image.open("assets/hoshuyi.jpg"),width=150)
+    col3.subheader('Ho Shu Yi')
+    col3.write('@Xytrix')
+    col3.write('GitHub: @Xytrix1103')
+    col3.write('IG: @shuyi_ho03')
 
     st.header('Appendix')
     st.text('https://www.geography.org.uk/teaching-resources/singapore-malaysia/Can-Malaysia-do-anything-about-its-air-pollution#:~:text=The%20first%20is%20air%20pollution,in%20all%20its%20major%20cities.')
@@ -107,31 +123,41 @@ elif option == "Project Demo":
 
     left_column1, right_column1 = st.beta_columns(2)
     left_column1.subheader('Car:')
-    if car_limit == 0 | car_limit >= dict["cars"]:
+    if car_limit == 0:
+        left_column1.image(imgTick,width=30)
+    elif car_limit >= dict["cars"]:
         left_column1.image(imgTick,width=30)
     else:
         left_column1.image(imgX,width=30)
 
     left_column1.subheader('Bus:')
-    if bus_limit == 0 | bus_limit >= dict["bus"]:
+    if bus_limit == 0:
+        left_column1.image(imgTick,width=30)
+    elif bus_limit >= dict["bus"]:
         left_column1.image(imgTick,width=30)
     else:
         left_column1.image(imgX,width=30)
 
     left_column1.subheader('Truck:')
-    if truck_limit == 0 | truck_limit >= dict["truck"]:
+    if truck_limit == 0:
+        left_column1.image(imgTick,width=30)
+    elif truck_limit >= dict["truck"]:
         left_column1.image(imgTick,width=30)
     else:
         left_column1.image(imgX,width=30)
 
     left_column1.subheader('Motorcycle:')
-    if motorcycle_limit == 0 | motorcycle_limit >= dict["motorcycle"]:
+    if motorcycle_limit == 0:
+        left_column1.image(imgTick,width=30)
+    elif motorcycle_limit >= dict["motorcycle"]:
         left_column1.image(imgTick,width=30)
     else:
         left_column1.image(imgX,width=30)
 
     right_column1.subheader('Number of vehicles in total:')
-    if (car_limit + bus_limit + truck_limit + motorcycle_limit) == 0 | (car_limit + bus_limit + truck_limit + motorcycle_limit) >= len(list):
+    if (car_limit + bus_limit + truck_limit + motorcycle_limit) == 0:
+        right_column1.image(imgTick,width=60)
+    elif (car_limit + bus_limit + truck_limit + motorcycle_limit) >= len(list):
         right_column1.image(imgTick,width=60)
     else:
         right_column1.image(imgX,width=60)
