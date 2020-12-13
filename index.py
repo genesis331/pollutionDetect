@@ -109,12 +109,17 @@ elif option == "Project Demo":
         "cars": 0,
         "bus": 0,
         "truck": 0,
-        "motorcycle" : 0
+        "motorcycle": 0,
+        "total": 0
     }
     dict["cars"] += list.count(2)
+    dict["total"] += list.count(2)
     dict["bus"] += list.count(5)
+    dict["total"] += list.count(5)
     dict["truck"] += list.count(7)
-    dict["motorcycle"] += list.count(7)
+    dict["total"] += list.count(7)
+    dict["motorcycle"] += list.count(3)
+    dict["total"] += list.count(3)
     st.table(pd.DataFrame(dict.items(),columns=['Vehicle Type','Value']))
     st.write('')
 
