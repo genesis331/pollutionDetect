@@ -12,6 +12,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import streamlit as st
 from streamlit import caching
+from imageai.Detection import ObjectDetection
 import pandas as pd
 pd.plotting.register_matplotlib_converters()
 
@@ -89,31 +90,37 @@ elif option == "Project Demo":
 
     st.echo()
     with st.echo():
-        import torch
-        from src.core.detect import Detector
-        from src.core.utils import utils
+        from imageai.Detection import ObjectDetection
+        import os
         from PIL import Image
         import cv2
 
     st.echo()
     with st.echo():
-        det = Detector(name="DemoDet")
+        execution_path = os.getcwd()
+        detector = ObjectDetection()
+        detector.setModelTypeAsYOLOv3()
+        detector.setModelPath( os.path.join(execution_path , "yolo.h5"))
+        detector.loadModel()
+        detections = detector.detectObjectsFromImage(input_image=os.path.join(execution_path , "assets/highway.jpg"), output_image_path=os.path.join(execution_path , "imagenew.jpg"), minimum_percentage_probability=20)
+
 
     st.echo()
     with st.echo():
         img = Image.open("assets/highway.jpg")
         st.image(img, width=700)
-
+       
     st.echo()
     with st.echo():
-        img_cv = utils.pil_to_cv2(img)
-        output = det.predict(img_cv)
-        out_img = det.visualize(img_cv, output, figsize=(18, 18))
-        cv2.imwrite('tempImage.jpg', out_img)
-        st.image('tempImage.jpg', width=700)
+        img2 = Image.open("imagenew.jpg")
+        st.image(img2, width=700)
 
-    objects = getattr(output['instances'],'pred_classes')
-    list = objects.tolist()
+    vehicle = []
+    count = 0
+    for eachObject in detections:
+        vehicle.append(eachObject["name"])
+        count += 1
+
     dict = {
         "cars": 0,
         "bus": 0,
@@ -121,14 +128,12 @@ elif option == "Project Demo":
         "motorcycle": 0,
         "total": 0
     }
-    dict["cars"] += list.count(2)
-    dict["total"] += list.count(2)
-    dict["bus"] += list.count(5)
-    dict["total"] += list.count(5)
-    dict["truck"] += list.count(7)
-    dict["total"] += list.count(7)
-    dict["motorcycle"] += list.count(3)
-    dict["total"] += list.count(3)
+
+    dict["cars"] += vehicle.count('car')
+    dict["bus"] += vehicle.count('bus')
+    dict["truck"] += vehicle.count('truck')
+    dict["motorcycle"] += vehicle.count('motorcycle')
+    dict["total"] += count
     st.table(pd.DataFrame(dict.items(),columns=['Vehicle Type','Value']))
     st.write('')
 
