@@ -90,6 +90,7 @@ elif option == "Project Demo":
 
     st.echo()
     with st.echo():
+        # import libraries 
         from imageai.Detection import ObjectDetection
         import os
         from PIL import Image
@@ -97,6 +98,7 @@ elif option == "Project Demo":
 
     st.echo()
     with st.echo():
+        # define model files and get image
         execution_path = os.getcwd()
         detector = ObjectDetection()
         detector.setModelTypeAsYOLOv3()
@@ -115,27 +117,29 @@ elif option == "Project Demo":
         img2 = Image.open("imagenew.jpg")
         st.image(img2, width=700)
 
-    vehicle = []
-    count = 0
-    for eachObject in detections:
-        vehicle.append(eachObject["name"])
-        count += 1
+    st.echo()
+    with st.echo():
+        # get vehicle type and add into a dictionary
+        vehicle = []
+        count = 0
+        for eachObject in detections:
+            vehicle.append(eachObject["name"])
+            count += 1
 
-    dict = {
-        "cars": 0,
-        "bus": 0,
-        "truck": 0,
-        "motorcycle": 0,
-        "total": 0
-    }
+        dict = {
+            "cars": 0,
+            "bus": 0,
+            "truck": 0,
+            "motorcycle": 0,
+            "total": 0
+        }
 
-    dict["cars"] += vehicle.count('car')
-    dict["bus"] += vehicle.count('bus')
-    dict["truck"] += vehicle.count('truck')
-    dict["motorcycle"] += vehicle.count('motorcycle')
-    dict["total"] += count
-    st.table(pd.DataFrame(dict.items(),columns=['Vehicle Type','Value']))
-    st.write('')
+        dict["cars"] += vehicle.count('car')
+        dict["bus"] += vehicle.count('bus')
+        dict["truck"] += vehicle.count('truck')
+        dict["motorcycle"] += vehicle.count('motorcycle')
+        dict["total"] += count
+        st.table(pd.DataFrame(dict.items(),columns=['Vehicle Type','Value']))
 
     imgTick = Image.open("assets/check-circle.png")
     imgX = Image.open("assets/alert-circle.png")
