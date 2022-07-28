@@ -1,2 +1,4 @@
+venv/
 __pycache__
+oryx-build-commands.txt
 tempImage.jpg
