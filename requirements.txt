@@ -1,4 +1,4 @@
-absl-py==0.11.0
+absl-py==1.2.0
 altair==4.1.0
 argon2-cffi==20.1.0
 astor==0.8.1
@@ -23,6 +23,7 @@ defusedxml==0.6.0
 detectron2==0.3+cpu
 entrypoints==0.3
 filelock==3.0.12
+flatbuffers==1.12
 future==0.18.2
 fvcore==0.1.2.post20201212
 gast==0.3.3
@@ -38,7 +39,7 @@ idna==2.10
 imageio==2.9.0
 iopath==0.1.2
 ipykernel==5.4.2
-ipython
+ipython==7.19.0
 ipython-genutils==0.2.0
 ipywidgets==7.5.1
 jedi==0.17.2
@@ -51,8 +52,10 @@ jupyter-core==4.7.0
 jupyterlab==2.1.5
 jupyterlab-pygments==0.1.2
 jupyterlab-server==1.2.0
+keras==2.9.0
 Keras-Preprocessing==1.1.2
 kiwisolver==1.3.1
+libclang==14.0.1
 Markdown==3.3.3
 MarkupSafe==1.1.1
 matplotlib==3.3.1
@@ -63,7 +66,7 @@ nbformat==5.0.8
 nest-asyncio==1.4.3
 networkx==2.5
 notebook==6.1.5
-numpy==1.18.5
+numpy==1.23.1
 oauthlib==3.1.0
 opencv-python==4.3.0.38
 opt-einsum==3.3.0
@@ -111,10 +114,12 @@ six==1.15.0
 smmap==3.0.4
 streamlit==0.72.0
 tabulate==0.8.7
-tensorboard==2.4.0
+tensorboard==2.9.1
+tensorboard-data-server==0.6.1
 tensorboard-plugin-wit==1.7.0
-tensorflow==2.3.1
-tensorflow-estimator==2.3.0
+tensorflow==2.9.1
+tensorflow-estimator==2.9.0
+tensorflow-io-gcs-filesystem==0.26.0
 termcolor==1.1.0
 terminado==0.9.1
 testpath==0.4.4
@@ -139,4 +144,3 @@ Werkzeug==1.0.1
 widgetsnbextension==3.5.1
 wrapt==1.12.1
 yacs==0.1.8
--f https://dl.fbaipublicfiles.com/detectron2/wheels/cpu/torch1.7/index.html
