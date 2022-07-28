@@ -46,7 +46,7 @@ if option == "Project Overview":
 
     st.header('Our Team')
     st.write('')
-    col1, col2, col3 = st.beta_columns(3)
+    col1, col2, col3 = st.columns(3)
     col1.image(Image.open("assets/cheahzixu.jpg"),width=150)
     col1.subheader('Cheah Zixu')
     col1.write('@Xephius')
@@ -79,7 +79,7 @@ elif option == "Project Demo":
     st.title('Project Demo')
     st.write('')
 
-    left_column, right_column = st.beta_columns(2)
+    left_column, right_column = st.columns(2)
     car_limit = left_column.number_input('Cars',min_value=0,value=0)
     bus_limit = left_column.number_input('Buses',min_value=0,value=0)
     truck_limit = left_column.number_input('Trucks',min_value=0,value=0)
@@ -135,7 +135,7 @@ elif option == "Project Demo":
     imgTick = Image.open("assets/check-circle.png")
     imgX = Image.open("assets/alert-circle.png")
 
-    left_column1, right_column1 = st.beta_columns(2)
+    left_column1, right_column1 = st.columns(2)
     left_column1.subheader('Car:')
     if car_limit == 0:
         left_column1.image(imgTick,width=30)
